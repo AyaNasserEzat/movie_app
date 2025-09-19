@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/core/utils/functions/app_bar.dart';
 import 'package:movies_app/feature/home/presentation/views/widgets/popuar_moie_item.dart';
 
 class PopularMoviesView extends StatelessWidget {
@@ -7,7 +8,9 @@ class PopularMoviesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       backgroundColor: Color(0xff1e1e29),
+      appBar: customAppBar(title: "Popular movies"),
       body: Column(
         children: [
           Expanded(
