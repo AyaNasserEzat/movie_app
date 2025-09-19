@@ -1,0 +1,73 @@
+import 'package:flutter/material.dart';
+import 'package:movies_app/feature/home/presentation/views/widgets/custom_movie_image.dart';
+
+class PopularMoviesView extends StatelessWidget {
+  const PopularMoviesView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color(0xff1e1e29),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 150,
+            child: Container(
+              padding: EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: Color(0xff303030),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                spacing: 10,
+                children: [
+                  CustomMovieImage(),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      spacing: 10,
+                      children: [
+                        SizedBox(height: 10,),
+                        Text(
+                          "Demon Slayer-Kimetsu no",
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 3,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(4),
+                              ),
+                              child: Text("2023"),
+                            ),
+                            SizedBox(width: 20),
+                            Icon(Icons.star, color: Colors.amber),
+                            SizedBox(width: 4),
+                            Text("4.5"),
+                          ],
+                        ),
+                        Text(
+                          "Ταημό tamasa, jonct with mea Hushihiro soy sad my boors whe",
+                          style: TextStyle(fontSize: 14),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}

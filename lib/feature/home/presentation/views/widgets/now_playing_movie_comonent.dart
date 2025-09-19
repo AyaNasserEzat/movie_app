@@ -19,8 +19,8 @@ class NowPlayingMovieComponent extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                begin: Alignment.bottomCenter, // يبدأ من تحت
-                end: Alignment.topCenter, // يخلص فوق
+                begin: Alignment.bottomCenter, 
+                end: Alignment.topCenter, 
                 colors: [Colors.grey.shade900, Colors.transparent],
               ),
             ),
