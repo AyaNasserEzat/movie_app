@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/feature/home/presentation/views/widgets/custom_movie_image.dart';
+import 'package:movies_app/feature/home/presentation/views/widgets/realse_year_widget.dart';
 
 class PopularMovieItem extends StatelessWidget {
   const PopularMovieItem({
@@ -34,17 +35,7 @@ class PopularMovieItem extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 12,
-                          vertical: 3,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(4),
-                        ),
-                        child: Text("2023"),
-                      ),
+                      RealseYearWidget(realseYear: '2020',),
                       SizedBox(width: 20),
                       Icon(Icons.star, color: Colors.amber),
                       SizedBox(width: 4),
