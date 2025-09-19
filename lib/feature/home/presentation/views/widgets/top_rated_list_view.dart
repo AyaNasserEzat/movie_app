@@ -9,13 +9,13 @@ class TopRatedListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .25,
+      height: MediaQuery.of(context).size.height * .22,
       child: ListView.builder(
         itemCount: 10,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.only(left: 8),
+            padding: const EdgeInsets.only(left: 12),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
               child: AspectRatio(
