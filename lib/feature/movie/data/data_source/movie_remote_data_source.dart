@@ -28,7 +28,7 @@ class MovieRemoteDataSourceImp extends MovieRemoteDataSource {
 
   @override
   Future<List<MovieModel>> gettPopularMovies() async {
-    final response = await apiService.get(endPoint: 'movie/popular');
+    final response = await apiService.get(endPoint: 'popular');
     return List<MovieModel>.from(
       (response["results"] as List).map((e) => MovieModel.fromJson(e)),
     );
