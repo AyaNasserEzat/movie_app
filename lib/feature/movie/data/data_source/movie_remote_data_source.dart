@@ -1,0 +1,36 @@
+import 'package:movies_app/core/utils/functions/api_service.dart';
+import 'package:movies_app/feature/movie/data/models/movie_model.dart';
+
+abstract class MovieRemoteDataSource {
+  Future<List<MovieModel>> getNowPlayingMovies();
+  Future<List<MovieModel>> getTopRatedMovies();
+  Future<List<MovieModel>> gettPopularMovies();
+}
+
+class MovieRemoteDataSourceImp extends MovieRemoteDataSource {
+  ApiService apiService;
+  MovieRemoteDataSourceImp(this.apiService);
+  @override
+  Future<List<MovieModel>> getNowPlayingMovies() async {
+    final response = await apiService.get(endPoint: 'movie/now_playing');
+    return List<MovieModel>.from(
+      (response["results"] as List).map((e) => MovieModel.fromJson(e)),
+    );
+  }
+
+  @override
+  Future<List<MovieModel>> getTopRatedMovies() async {
+    final response = await apiService.get(endPoint: 'movie/top_rated');
+    return List<MovieModel>.from(
+      (response["results"] as List).map((e) => MovieModel.fromJson(e)),
+    );
+  }
+
+  @override
+  Future<List<MovieModel>> gettPopularMovies() async {
+    final response = await apiService.get(endPoint: 'movie/popular');
+    return List<MovieModel>.from(
+      (response["results"] as List).map((e) => MovieModel.fromJson(e)),
+    );
+  }
+}
