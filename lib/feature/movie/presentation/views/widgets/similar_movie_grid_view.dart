@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/feature/home/presentation/views/movie_details_view.dart';
-import 'package:movies_app/feature/home/presentation/views/widgets/custom_movie_image.dart';
+import 'package:movies_app/feature/movie/presentation/views/movie_details_view.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/custom_movie_image.dart';
 
 class MoviesGridView extends StatelessWidget {
   const MoviesGridView({super.key});

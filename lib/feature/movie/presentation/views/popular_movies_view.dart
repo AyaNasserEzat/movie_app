@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/utils/functions/app_bar.dart';
-import 'package:movies_app/feature/home/presentation/views/widgets/popuar_movie_item.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/popuar_movie_item.dart';
 
 class PopularMoviesView extends StatelessWidget {
   const PopularMoviesView({super.key});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/feature/home/presentation/views/widgets/custom_movie_image.dart';
-import 'package:movies_app/feature/home/presentation/views/widgets/realse_year_widget.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/custom_movie_image.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/realse_year_widget.dart';
 
 class PopularMovieItem extends StatelessWidget {
   const PopularMovieItem({

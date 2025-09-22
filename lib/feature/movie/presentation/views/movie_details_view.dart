@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/feature/home/presentation/views/widgets/realse_year_widget.dart';
-import 'package:movies_app/feature/home/presentation/views/widgets/similar_movie_grid_view.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/realse_year_widget.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/similar_movie_grid_view.dart';
 
 class MovieDetailsView extends StatelessWidget {
   const MovieDetailsView({super.key});

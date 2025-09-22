@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/feature/home/presentation/views/popular_movies_view.dart';
-import 'package:movies_app/feature/home/presentation/views/widgets/now_playing_movie_comonent.dart';
-import 'package:movies_app/feature/home/presentation/views/widgets/populare_movies_list_view.dart';
-import 'package:movies_app/feature/home/presentation/views/widgets/see_more_row.dart';
-import 'package:movies_app/feature/home/presentation/views/widgets/top_rated_list_view.dart';
+import 'package:movies_app/feature/movie/presentation/views/popular_movies_view.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/now_playing_movie_comonent.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/populare_movies_list_view.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/see_more_row.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/top_rated_list_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});

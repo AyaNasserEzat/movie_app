@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:movies_app/feature/home/presentation/views/movie_details_view.dart';
+import 'package:movies_app/feature/movie/presentation/views/movie_details_view.dart';
 
 class PopulareMovieListView extends StatelessWidget {
   const PopulareMovieListView({
