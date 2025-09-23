@@ -12,7 +12,7 @@ class MovieRemoteDataSourceImp extends MovieRemoteDataSource {
   MovieRemoteDataSourceImp(this.apiService);
   @override
   Future<List<MovieModel>> getNowPlayingMovies() async {
-    final response = await apiService.get(endPoint: 'movie/now_playing');
+    final response = await apiService.get(endPoint: 'now_playing');
     return List<MovieModel>.from(
       (response["results"] as List).map((e) => MovieModel.fromJson(e)),
     );
@@ -20,7 +20,7 @@ class MovieRemoteDataSourceImp extends MovieRemoteDataSource {
 
   @override
   Future<List<MovieModel>> getTopRatedMovies() async {
-    final response = await apiService.get(endPoint: 'movie/top_rated');
+    final response = await apiService.get(endPoint: 'top_rated');
     return List<MovieModel>.from(
       (response["results"] as List).map((e) => MovieModel.fromJson(e)),
     );

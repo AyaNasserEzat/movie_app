@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/feature/movie/presentation/mangers/movie_cubit/movie_cubit.dart';
-import 'package:movies_app/feature/movie/presentation/mangers/movie_cubit/movie_state.dart';
+import 'package:movies_app/feature/movie/presentation/mangers/popular_movies_cubit/popular_movies_cubit.dart';
+import 'package:movies_app/feature/movie/presentation/mangers/popular_movies_cubit/poulart_movies_state.dart';
 import 'package:movies_app/feature/movie/presentation/views/movie_details_view.dart';
 
 class PopulareMovieListView extends StatelessWidget {
@@ -9,11 +9,11 @@ class PopulareMovieListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<MovieCubit, MovieState>(
+    return BlocBuilder<PopularMovieCubit, PopularMovieState>(
       builder: (context, state) {
-        if (state is MovieLoading ) {
+        if (state is PopularMovieLoading ) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is MovieSuccess 
+        } else if (state is PopularMovieSuccess 
           ) {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .22,
@@ -46,7 +46,7 @@ class PopulareMovieListView extends StatelessWidget {
               },
             ),
           );
-        } else if (state is MovieFailure 
+        } else if (state is PopularMovieFailure 
             ) {
           return Center(child: Text(state.message));
         }
