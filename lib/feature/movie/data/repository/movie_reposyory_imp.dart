@@ -54,9 +54,19 @@ class MovieReposyoryImp extends MovieRepository {
   }
 
   @override
-  Future<Either<Failure, MovieDetailsEntity>> getMovieDetails({required MovieDetailsParams movieDetailsParams}) {
-    // TODO: implement getMovieDetails
-    throw UnimplementedError();
+  Future<Either<Failure, MovieDetailsEntity>> getMovieDetails({
+    required MovieDetailsParams movieDetailsParams,
+  }) async {
+    try {
+      MovieDetailsEntity movies = await movieRemoteDataSource.getMovieDetails(
+        movieDetailsParams: movieDetailsParams,
+      );
+      return right(movies);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      }
+      return left(ServerFailure(e.toString()));
+    }
   }
-
 }
