@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:movies_app/feature/movie/domain/entites/movie_enitiy.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/custom_movie_image.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/realse_year_widget.dart';
 
 class PopularMovieItem extends StatelessWidget {
   const PopularMovieItem({
-    super.key,
+    super.key, this.movieEntity,
   });
-
+final MovieEntity? movieEntity;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -29,7 +30,7 @@ class PopularMovieItem extends StatelessWidget {
                 children: [
                   SizedBox(height: 10,),
                   Text(
-                    "Demon Slayer-Kimetsu no",
+                    movieEntity!.title,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),

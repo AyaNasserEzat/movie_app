@@ -11,10 +11,9 @@ class PopulareMovieListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<PopularMovieCubit, PopularMovieState>(
       builder: (context, state) {
-        if (state is PopularMovieLoading ) {
+        if (state is PopularMovieLoading) {
           return const Center(child: CircularProgressIndicator());
-        } else if (state is PopularMovieSuccess 
-          ) {
+        } else if (state is PopularMovieSuccess) {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .22,
             child: ListView.builder(
@@ -24,10 +23,14 @@ class PopulareMovieListView extends StatelessWidget {
                 final movie = state.movies[index];
                 return GestureDetector(
                   onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) {
-                      return const MovieDetailsView();
-                    }));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return MovieDetailsView(movieEntity: movie);
+                        },
+                      ),
+                    );
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12),
@@ -46,8 +49,7 @@ class PopulareMovieListView extends StatelessWidget {
               },
             ),
           );
-        } else if (state is PopularMovieFailure 
-            ) {
+        } else if (state is PopularMovieFailure) {
           return Center(child: Text(state.message));
         }
         return const SizedBox.shrink();

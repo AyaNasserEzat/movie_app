@@ -21,10 +21,10 @@ class MoviesGridView extends StatelessWidget {
       itemBuilder: (context, index) {
         return GestureDetector(
           onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const MovieDetailsView()),
-            );
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (_) => const MovieDetailsView()),
+            // );
           },
           child: CustomMovieImage(borderRadius: 5),
         );
