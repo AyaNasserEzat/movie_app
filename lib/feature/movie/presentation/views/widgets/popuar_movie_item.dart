@@ -4,14 +4,12 @@ import 'package:movies_app/feature/movie/presentation/views/widgets/custom_movie
 import 'package:movies_app/feature/movie/presentation/views/widgets/realse_year_widget.dart';
 
 class PopularMovieItem extends StatelessWidget {
-  const PopularMovieItem({
-    super.key, this.movieEntity,
-  });
-final MovieEntity? movieEntity;
+  const PopularMovieItem({super.key, required this.movieEntity});
+  final MovieEntity movieEntity;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .21,
+      height: MediaQuery.of(context).size.height * .23,
       child: Container(
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
@@ -22,30 +20,35 @@ final MovieEntity? movieEntity;
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 10,
           children: [
-            CustomMovieImage(),
+            CustomMovieImage(
+              imageUrl:
+                  movieEntity.backdropPath,
+            ),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 spacing: 10,
                 children: [
-                  SizedBox(height: 10,),
+                  SizedBox(height: 10),
                   Text(
-                    movieEntity!.title,
+                    movieEntity.title,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   Row(
                     children: [
-                      RealseYearWidget(realseYear: '2020',),
+                      RealseYearWidget(
+                        realseYear: movieEntity.releaseDate.substring(0, 4),
+                      ),
                       SizedBox(width: 20),
                       Icon(Icons.star, color: Colors.amber),
                       SizedBox(width: 4),
-                      Text("4.5"),
+                      Text(movieEntity.voteAverage.toString()),
                     ],
                   ),
                   Text(
-                    "Ταημό tamasa, jonct with mea Hushihiro soy sad my boors whe",
-                    style: TextStyle(fontSize: 14),
+                    movieEntity.overview,
+                    style: TextStyle(fontSize: 12),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),

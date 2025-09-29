@@ -6,8 +6,10 @@ import 'package:movies_app/core/utils/functions/api_service.dart';
 import 'package:movies_app/feature/movie/data/data_source/movie_remote_data_source.dart';
 import 'package:movies_app/feature/movie/data/repository/movie_reposyory_imp.dart';
 import 'package:movies_app/feature/movie/domain/usecases/get_movie_details.dart';
+import 'package:movies_app/feature/movie/domain/usecases/get_recommendation_movies.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/movie_details_cubit/movie_details_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/movie_details_cubit/movie_details_state.dart';
+import 'package:movies_app/feature/movie/presentation/mangers/recommendations_movie_cubit/recommendation_movie_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/realse_year_widget.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/similar_movie_grid_view.dart';
 
@@ -93,7 +95,19 @@ class MovieDetailsView extends StatelessWidget {
                             style: TextStyle(fontSize: 18),
                           ),
                           const SizedBox(height: 5),
-                          const MoviesGridView(),
+                        BlocProvider(
+  create: (context) => RecommendationMoviesCubit(
+            GetRecommendationMoviesUseCase(
+              MovieReposyoryImp(
+                movieRemoteDataSource: MovieRemoteDataSourceImp(
+                  ApiService(Dio()),
+                ),
+              ),
+            ),
+          )..fetchRecommendationMovies(recommendationParams: RecommendationParams(movieId)),
+  child: const MoviesGridView(),
+),
+
                         ],
                       ),
                     ),

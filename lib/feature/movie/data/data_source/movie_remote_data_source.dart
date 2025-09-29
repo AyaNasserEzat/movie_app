@@ -2,6 +2,7 @@ import 'package:movies_app/core/utils/functions/api_service.dart';
 import 'package:movies_app/feature/movie/data/models/movie_details_model.dart';
 import 'package:movies_app/feature/movie/data/models/movie_model.dart';
 import 'package:movies_app/feature/movie/domain/usecases/get_movie_details.dart';
+import 'package:movies_app/feature/movie/domain/usecases/get_recommendation_movies.dart';
 
 abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> getNowPlayingMovies();
@@ -9,6 +10,9 @@ abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> gettPopularMovies();
   Future<MovieDetailsModel> getMovieDetails({
     required MovieDetailsParams movieDetailsParams,
+  });
+  Future<List<MovieModel>> getRecommendationMovies({
+    required RecommendationParams recommendationParams,
   });
 }
 
@@ -43,7 +47,21 @@ class MovieRemoteDataSourceImp extends MovieRemoteDataSource {
   Future<MovieDetailsModel> getMovieDetails({
     required MovieDetailsParams movieDetailsParams,
   }) async {
-    final response = await apiService.get(endPoint: movieDetailsParams.id.toString());
+    final response = await apiService.get(
+      endPoint: movieDetailsParams.id.toString(),
+    );
     return MovieDetailsModel.fromJson(response);
+  }
+
+  @override
+  Future<List<MovieModel>> getRecommendationMovies({
+    required RecommendationParams recommendationParams,
+  }) async {
+    final response = await apiService.get(
+      endPoint: '${recommendationParams.id.toString()}/recommendations',
+    );
+    return List<MovieModel>.from(
+      (response["results"] as List).map((e) => MovieModel.fromJson(e)),
+    );
   }
 }
