@@ -27,7 +27,7 @@ class PopulareMovieListView extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return MovieDetailsView(movieEntity: movie);
+                          return MovieDetailsView(movieId: movie.id);
                         },
                       ),
                     );
