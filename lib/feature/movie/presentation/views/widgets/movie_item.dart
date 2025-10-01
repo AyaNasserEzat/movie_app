@@ -3,8 +3,8 @@ import 'package:movies_app/feature/movie/domain/entites/movie_enitiy.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/custom_movie_image.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/realse_year_widget.dart';
 
-class PopularMovieItem extends StatelessWidget {
-  const PopularMovieItem({super.key, required this.movieEntity});
+class MovieItem extends StatelessWidget {
+  const MovieItem({super.key, required this.movieEntity});
   final MovieEntity movieEntity;
   @override
   Widget build(BuildContext context) {

@@ -11,6 +11,7 @@ import 'package:movies_app/feature/movie/presentation/mangers/now_playing_movies
 import 'package:movies_app/feature/movie/presentation/mangers/popular_movies_cubit/popular_movies_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/top_rated_movies_cubit/top_rated_movies_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/views/popular_movies_view.dart';
+import 'package:movies_app/feature/movie/presentation/views/top_rated_movies_view.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/now_playing_movie_comonent.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/populare_movies_list_view.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/see_more_row.dart';
@@ -80,7 +81,16 @@ class HomeView extends StatelessWidget {
                 },
               ),
               PopulareMovieListView(),
-              SeeMoreRow(text: "Top Rated"),
+              SeeMoreRow(text: "Top Rated", onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return TopRatedMoviesView();
+                      },
+                    ),
+                  );
+                },),
               TopRatedListView(),
             ],
           ),
