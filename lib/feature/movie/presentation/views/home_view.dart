@@ -31,24 +31,27 @@ class HomeView extends StatelessWidget {
       ],
       child: Scaffold(
         body: SingleChildScrollView(
-          child: Column(
-            children: [
-              NowPlayingMovieComponent(),
-              SeeMoreRow(
-                text: "Popular",
-                onTap: () {
-                  navigateTo(context: context, screen: PopularMoviesView());
-                },
-              ),
-              PopulareMovieListView(),
-              SeeMoreRow(
-                text: "Top Rated",
-                onTap: () {
-                  navigateTo(context: context, screen: TopRatedMoviesView());
-                },
-              ),
-              TopRatedListView(),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.only(bottom: 10.0),
+            child: Column(
+              children: [
+                NowPlayingMovieComponent(),
+                SeeMoreRow(
+                  text: "Popular",
+                  onTap: () {
+                    navigateTo(context: context, screen: PopularMoviesView());
+                  },
+                ),
+                PopulareMovieListView(),
+                SeeMoreRow(
+                  text: "Top Rated",
+                  onTap: () {
+                    navigateTo(context: context, screen: TopRatedMoviesView());
+                  },
+                ),
+                TopRatedListView(),
+              ],
+            ),
           ),
         ),
       ),

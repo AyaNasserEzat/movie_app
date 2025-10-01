@@ -7,6 +7,7 @@ import 'package:movies_app/feature/movie/domain/usecases/get_recommendation_movi
 import 'package:movies_app/feature/movie/presentation/mangers/movie_details_cubit/movie_details_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/movie_details_cubit/movie_details_state.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/recommendations_movie_cubit/recommendation_movie_cubit.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/movie_details_shimmer.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/realse_year_widget.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/similar_movie_grid_view.dart';
 
@@ -26,7 +27,7 @@ class MovieDetailsView extends StatelessWidget {
         body: BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
           builder: (context, state) {
             if (state is MovieDetailsLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return const MovieDetailsShimmer();
             } else if (state is MovieDetailsFailure) {
               return Center(
                 child: Text(
@@ -51,6 +52,7 @@ class MovieDetailsView extends StatelessWidget {
                       padding: const EdgeInsets.all(13.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
+                        spacing: 5,
                         children: [
                           Text(
                             movieDetailsEntity.title,

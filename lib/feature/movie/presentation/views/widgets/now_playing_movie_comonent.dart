@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/now_playing_movies_cubit/now_playing_movie_state.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/now_playing_movies_cubit/now_playing_movies_cubit.dart';
+import 'package:shimmer/shimmer.dart';
 
 class NowPlayingMovieComponent extends StatelessWidget {
   const NowPlayingMovieComponent({super.key});
@@ -13,9 +14,14 @@ class NowPlayingMovieComponent extends StatelessWidget {
     return BlocBuilder<NowPlayingMovieCubit, NowPlayingMovieState>(
       builder: (context, state) {
         if (state is NowPlayingMovieLoading) {
-          return const SizedBox(
-            height: 350,
-            child: Center(child: CircularProgressIndicator()),
+          return Shimmer.fromColors(
+            baseColor: Colors.grey[800]!,
+            highlightColor: Colors.grey[600]!,
+            child: Container(
+              width: double.infinity,
+              height: 320,
+              color: Colors.grey,
+            ),
           );
         } else if (state is NowPlayingMovieSuccess) {
           final movie = state.movies.isNotEmpty ? state.movies : null;
@@ -42,7 +48,7 @@ class NowPlayingMovieComponent extends StatelessWidget {
                         // صورة الفيلم
                         CachedNetworkImage(
                           imageUrl:
-                              "https://image.tmdb.org/t/p/w500${e.backdropPath ?? e.posterPath}",
+                              "https://image.tmdb.org/t/p/w500${e.backdropPath}",
                           width: double.infinity,
                           height: double.infinity,
                           fit: BoxFit.cover,
@@ -77,6 +83,7 @@ class NowPlayingMovieComponent extends StatelessWidget {
                                     ),
                                     SizedBox(width: 8),
                                     Text(
+                                      textAlign: TextAlign.center,
                                       "Now Playing",
                                       style: TextStyle(
                                         fontWeight: FontWeight.bold,

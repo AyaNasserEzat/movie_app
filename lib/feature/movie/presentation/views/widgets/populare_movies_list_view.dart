@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movies_app/core/utils/functions/navigation.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/popular_movies_cubit/popular_movies_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/popular_movies_cubit/poulart_movies_state.dart';
 import 'package:movies_app/feature/movie/presentation/views/movie_details_view.dart';
@@ -24,14 +25,7 @@ class PopulareMovieListView extends StatelessWidget {
                 final movie = state.movies[index];
                 return GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return MovieDetailsView(movieId: movie.id);
-                        },
-                      ),
-                    );
+                    navigateTo(context: context, screen: MovieDetailsView(movieId: movie.id));
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12),
