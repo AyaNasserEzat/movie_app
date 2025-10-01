@@ -1,11 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/utils/functions/api_service.dart';
+import 'package:movies_app/core/services/service_locator.dart';
 import 'package:movies_app/core/utils/functions/app_bar.dart';
-import 'package:movies_app/feature/movie/data/data_source/movie_remote_data_source.dart';
-import 'package:movies_app/feature/movie/data/repository/movie_reposyory_imp.dart';
-import 'package:movies_app/feature/movie/domain/usecases/get_to_rated_movies.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/top_rated_movies_cubit/top_rated_movie_state.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/top_rated_movies_cubit/top_rated_movies_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/movie_item.dart';
@@ -21,15 +17,7 @@ class TopRatedMoviesView extends StatelessWidget {
       appBar: customAppBar(title: "Top Rated movies"),
       body: BlocProvider(
         create:
-            (context) => TopRatedMoviesCubit(
-              GetToRatedMoviesUseCase(
-                MovieReposyoryImp(
-                  movieRemoteDataSource: MovieRemoteDataSourceImp(
-                    ApiService(Dio()),
-                  ),
-                ),
-              ),
-            )..fetchTopRatedMovies(),
+            (context) => sl<TopRatedMoviesCubit>()..fetchTopRatedMovies(),
 
         child: BlocBuilder<TopRatedMoviesCubit, TopRatedMovieState>(
           builder: (context, state) {

@@ -1,10 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/utils/functions/api_service.dart';
-import 'package:movies_app/feature/movie/data/data_source/movie_remote_data_source.dart';
-import 'package:movies_app/feature/movie/data/repository/movie_reposyory_imp.dart';
+import 'package:movies_app/core/services/service_locator.dart';
 import 'package:movies_app/feature/movie/domain/usecases/get_movie_details.dart';
 import 'package:movies_app/feature/movie/domain/usecases/get_recommendation_movies.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/movie_details_cubit/movie_details_cubit.dart';
@@ -21,15 +18,9 @@ class MovieDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create:
-          (context) => MovieDetailsCubit(
-            GetMovieDetailsUseCase(
-              MovieReposyoryImp(
-                movieRemoteDataSource: MovieRemoteDataSourceImp(
-                  ApiService(Dio()),
-                ),
-              ),
-            ),
-          )..fetchMovieDetails(MovieDetailsParams(id: movieId)),
+          (context) =>
+              sl<MovieDetailsCubit>()
+                ..fetchMovieDetails(MovieDetailsParams(id: movieId)),
       child: Scaffold(
         backgroundColor: const Color(0xff1e1e29),
         body: BlocBuilder<MovieDetailsCubit, MovieDetailsState>(
@@ -80,7 +71,9 @@ class MovieDetailsView extends StatelessWidget {
                               const SizedBox(width: 4),
                               Text(movieDetailsEntity.voteAverage.toString()),
                               const SizedBox(width: 30),
-                             Text("${movieDetailsEntity.runtime~/60} h ${movieDetailsEntity.runtime%60} m"),
+                              Text(
+                                "${movieDetailsEntity.runtime ~/ 60} h ${movieDetailsEntity.runtime % 60} m",
+                              ),
                             ],
                           ),
                           const SizedBox(height: 5),
@@ -95,19 +88,16 @@ class MovieDetailsView extends StatelessWidget {
                             style: TextStyle(fontSize: 18),
                           ),
                           const SizedBox(height: 5),
-                        BlocProvider(
-  create: (context) => RecommendationMoviesCubit(
-            GetRecommendationMoviesUseCase(
-              MovieReposyoryImp(
-                movieRemoteDataSource: MovieRemoteDataSourceImp(
-                  ApiService(Dio()),
-                ),
-              ),
-            ),
-          )..fetchRecommendationMovies(recommendationParams: RecommendationParams(movieId)),
-  child: const MoviesGridView(),
-),
-
+                          BlocProvider(
+                            create:
+                                (context) =>
+                                    sl<RecommendationMoviesCubit>()
+                                      ..fetchRecommendationMovies(
+                                        recommendationParams:
+                                            RecommendationParams(movieId),
+                                      ),
+                            child: const MoviesGridView(),
+                          ),
                         ],
                       ),
                     ),

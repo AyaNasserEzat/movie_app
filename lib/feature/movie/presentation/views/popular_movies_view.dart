@@ -1,11 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movies_app/core/utils/functions/api_service.dart';
+import 'package:movies_app/core/services/service_locator.dart';
 import 'package:movies_app/core/utils/functions/app_bar.dart';
-import 'package:movies_app/feature/movie/data/data_source/movie_remote_data_source.dart';
-import 'package:movies_app/feature/movie/data/repository/movie_reposyory_imp.dart';
-import 'package:movies_app/feature/movie/domain/usecases/get_popular_movies.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/popular_movies_cubit/popular_movies_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/popular_movies_cubit/poulart_movies_state.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/movie_item.dart';
@@ -22,15 +18,7 @@ class PopularMoviesView extends StatelessWidget {
       appBar: customAppBar(title: "Popular movies"),
       body: BlocProvider(
         create:
-            (context) => PopularMovieCubit(
-              GetPopularMoviesUseCase(
-                MovieReposyoryImp(
-                  movieRemoteDataSource: MovieRemoteDataSourceImp(
-                    ApiService(Dio()),
-                  ),
-                ),
-              ),
-            )..fetchPopularMovies(),
+            (context) => sl<PopularMovieCubit>()..fetchPopularMovies(),
 
         child: BlocBuilder<PopularMovieCubit, PopularMovieState>(
           builder: (context, state) {
