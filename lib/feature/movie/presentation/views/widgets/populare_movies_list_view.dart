@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/popular_movies_cubit/popular_movies_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/popular_movies_cubit/poulart_movies_state.dart';
 import 'package:movies_app/feature/movie/presentation/views/movie_details_view.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/movie_image_shimmer_list_view.dart';
 
 class PopulareMovieListView extends StatelessWidget {
   const PopulareMovieListView({super.key});
@@ -12,7 +13,7 @@ class PopulareMovieListView extends StatelessWidget {
     return BlocBuilder<PopularMovieCubit, PopularMovieState>(
       builder: (context, state) {
         if (state is PopularMovieLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return MovieImageShimmerListView();
         } else if (state is PopularMovieSuccess) {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .22,

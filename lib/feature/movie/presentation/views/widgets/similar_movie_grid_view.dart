@@ -39,13 +39,13 @@ class MoviesGridView extends StatelessWidget {
                 },
                 child: CustomMovieImage(
                   borderRadius: 5,
-                  imageUrl: "https://image.tmdb.org/t/p/w500${movie.backdropPath}", // أو posterPath حسب المتاح
+                  imageUrl: "https://image.tmdb.org/t/p/w500${movie.backdropPath}", 
                 ),
               );
             },
           );
         } else {
-          return const SizedBox.shrink(); // لو Initial
+          return const SizedBox.shrink(); 
         }
       },
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/services/service_locator.dart';
+import 'package:movies_app/core/utils/functions/navigation.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/now_playing_movies_cubit/now_playing_movies_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/popular_movies_cubit/popular_movies_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/top_rated_movies_cubit/top_rated_movies_cubit.dart';
@@ -19,16 +20,13 @@ class HomeView extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create:
-              (_) => sl<PopularMovieCubit>()..fetchPopularMovies(),
+          create: (_) => sl<PopularMovieCubit>()..fetchPopularMovies(),
         ),
         BlocProvider(
-          create:
-              (_) => sl<TopRatedMoviesCubit>()..fetchTopRatedMovies(),
+          create: (_) => sl<TopRatedMoviesCubit>()..fetchTopRatedMovies(),
         ),
         BlocProvider(
-          create:
-              (_) => sl<NowPlayingMovieCubit>()..fetchNowPlayingMovies(),
+          create: (_) => sl<NowPlayingMovieCubit>()..fetchNowPlayingMovies(),
         ),
       ],
       child: Scaffold(
@@ -39,27 +37,16 @@ class HomeView extends StatelessWidget {
               SeeMoreRow(
                 text: "Popular",
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return PopularMoviesView();
-                      },
-                    ),
-                  );
+                  navigateTo(context: context, screen: PopularMoviesView());
                 },
               ),
               PopulareMovieListView(),
-              SeeMoreRow(text: "Top Rated", onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return TopRatedMoviesView();
-                      },
-                    ),
-                  );
-                },),
+              SeeMoreRow(
+                text: "Top Rated",
+                onTap: () {
+                  navigateTo(context: context, screen: TopRatedMoviesView());
+                },
+              ),
               TopRatedListView(),
             ],
           ),

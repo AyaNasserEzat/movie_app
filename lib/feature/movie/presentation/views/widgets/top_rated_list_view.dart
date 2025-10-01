@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/top_rated_movies_cubit/top_rated_movie_state.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/top_rated_movies_cubit/top_rated_movies_cubit.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/movie_image_shimmer_list_view.dart';
 
 class TopRatedListView extends StatelessWidget {
   const TopRatedListView({super.key});
@@ -11,7 +12,7 @@ class TopRatedListView extends StatelessWidget {
     return BlocBuilder<TopRatedMoviesCubit, TopRatedMovieState>(
       builder: (context, state) {
         if (state is TopRatedMovieLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return MovieImageShimmerListView();
         } else if (state is TopRatedMovieSuccess) {
           return SizedBox(
             height: MediaQuery.of(context).size.height * .22,

@@ -5,6 +5,7 @@ import 'package:movies_app/core/utils/functions/app_bar.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/top_rated_movies_cubit/top_rated_movie_state.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/top_rated_movies_cubit/top_rated_movies_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/movie_item.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/movie_item_shimmer_list_view.dart';
 
 class TopRatedMoviesView extends StatelessWidget {
   const TopRatedMoviesView({super.key});
@@ -14,7 +15,7 @@ class TopRatedMoviesView extends StatelessWidget {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: Color(0xff1e1e29),
-      appBar: customAppBar(title: "Top Rated movies"),
+      appBar: customAppBar(title: "Top Rated movies", context: context),
       body: BlocProvider(
         create:
             (context) => sl<TopRatedMoviesCubit>()..fetchTopRatedMovies(),
@@ -22,7 +23,7 @@ class TopRatedMoviesView extends StatelessWidget {
         child: BlocBuilder<TopRatedMoviesCubit, TopRatedMovieState>(
           builder: (context, state) {
             if (state is TopRatedMovieLoading) {
-              return const Center(child: CircularProgressIndicator());
+              return MovieItemShimmerListiew();
             } else if (state is TopRatedMovieSuccess) {
               return Expanded(
                 child: ListView.builder(
