@@ -18,14 +18,15 @@ class MoviesGridView extends StatelessWidget {
           return const GridViewShimmer();
         } else if (state is RecommendationMovieSuccess) {
           if (state.movies.isEmpty) {
-            return const SliverFillRemaining(
-              hasScrollBody: false,
-              child: Center(
-                child: Text(
-                  "No movies found 🔍",
-                  style: TextStyle(color: Colors.grey, fontSize: 18),
+            return const Column(
+              children: [
+                Center(
+                  child: Text(
+                    "No movies found 🔍",
+                    style: TextStyle(color: Colors.grey, fontSize: 18),
+                  ),
                 ),
-              ),
+              ],
             );
           }
           return GridView.builder(
