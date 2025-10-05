@@ -43,7 +43,12 @@ dependencies:
   get_it: ^8.2.0
   carousel_slider: ^5.1.1
 
+ 
+
+
 dev_dependencies:
+  flutter_launcher_icons: ^0.14.4
+  flutter_native_splash: ^2.4.6
   flutter_test:
     sdk: flutter
 
@@ -52,7 +57,19 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
+  
+flutter_launcher_icons:
   flutter_lints: ^5.0.0
+  android: true
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  min_sdk_android: 21
+
+flutter_native_splash:
+  color: "#212121"           # Background color (white)
+  image: assets/images/app_icon.png  # Your logo path
+  android: true
+  ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

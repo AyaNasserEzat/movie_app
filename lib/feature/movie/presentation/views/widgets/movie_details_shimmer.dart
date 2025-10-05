@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movies_app/core/widgets/custom_shimmer_container.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/grid_view_shimmer.dart';
 import 'package:shimmer/shimmer.dart';
 
 class MovieDetailsShimmer extends StatelessWidget {
@@ -48,6 +49,9 @@ class MovieDetailsShimmer extends StatelessWidget {
 
                 CustomShimmerContainer(width: 180, height: 14),
                 const SizedBox(height: 15),
+                const Text("MORE LIKE THIS", style: TextStyle(fontSize: 18)),
+                 const SizedBox(height: 15),
+                GridViewShimmer()
               ],
             ),
           ),

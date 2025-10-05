@@ -4,6 +4,7 @@ import 'package:movies_app/core/utils/functions/navigation.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/popular_movies_cubit/popular_movies_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/popular_movies_cubit/poulart_movies_state.dart';
 import 'package:movies_app/feature/movie/presentation/views/movie_details_view.dart';
+import 'package:movies_app/feature/movie/presentation/views/widgets/custom_movie_image.dart';
 import 'package:movies_app/feature/movie/presentation/views/widgets/movie_image_shimmer_list_view.dart';
 
 class PopulareMovieListView extends StatelessWidget {
@@ -25,20 +26,14 @@ class PopulareMovieListView extends StatelessWidget {
                 final movie = state.movies[index];
                 return GestureDetector(
                   onTap: () {
-                    navigateTo(context: context, screen: MovieDetailsView(movieId: movie.id));
+                    navigateTo(
+                      context: context,
+                      screen: MovieDetailsView(movieId: movie.id),
+                    );
                   },
                   child: Padding(
                     padding: const EdgeInsets.only(left: 12),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: AspectRatio(
-                        aspectRatio: 2.6 / 4,
-                        child: Image.network(
-                          "https://image.tmdb.org/t/p/w500${movie.backdropPath}",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
+                    child: CustomMovieImage(imageUrl: movie.backdropPath),
                   ),
                 );
               },
