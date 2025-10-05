@@ -6,15 +6,17 @@ class CustomMovieImage extends StatelessWidget {
   const CustomMovieImage({
     super.key,
     this.borderRadius=10,
+    this.aspectRatio=2.9 / 4,
     required this.imageUrl
   });
 final double borderRadius;
 final String imageUrl;
+final double aspectRatio;
   @override
   Widget build(BuildContext context) {
     return
      AspectRatio(
-      aspectRatio: 2.9 / 4,
+      aspectRatio:aspectRatio,
       child: 
       ClipRRect(
         borderRadius: BorderRadius.circular(borderRadius),
