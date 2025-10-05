@@ -64,8 +64,11 @@ class MovieDetailsView extends StatelessWidget {
                           Row(
                             children: [
                               RealseYearWidget(
-                                realseYear: movieDetailsEntity.releaseDate
-                                    .substring(0, 4),
+                                realseYear:
+                                    movieDetailsEntity.releaseDate.isNotEmpty
+                                        ? movieDetailsEntity.releaseDate
+                                            .substring(0, 4)
+                                        : "",
                                 color: const Color(0xff303030),
                               ),
                               const SizedBox(width: 20),

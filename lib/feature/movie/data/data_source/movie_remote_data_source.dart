@@ -48,7 +48,7 @@ class MovieRemoteDataSourceImp extends MovieRemoteDataSource {
     required MovieDetailsParams movieDetailsParams,
   }) async {
     final response = await apiService.get(
-      endPoint: movieDetailsParams.id.toString(),
+      endPoint: 'movie/${movieDetailsParams.id.toString()}',
     );
     return MovieDetailsModel.fromJson(response);
   }

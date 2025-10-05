@@ -16,8 +16,6 @@ class MoviesGridView extends StatelessWidget {
       builder: (context, state) {
         if (state is RecommendationMovieLoading) {
           return const GridViewShimmer();
-        } else if (state is RecommendationMovieFailure) {
-          return Center(child: Text(state.message));
         } else if (state is RecommendationMovieSuccess) {
           return GridView.builder(
             padding: EdgeInsets.zero,
@@ -47,6 +45,8 @@ class MoviesGridView extends StatelessWidget {
               );
             },
           );
+        } else if (state is RecommendationMovieFailure) {
+          return Center(child: Text(state.message));
         } else {
           return const SizedBox.shrink();
         }
