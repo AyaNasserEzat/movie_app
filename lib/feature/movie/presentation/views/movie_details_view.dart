@@ -47,6 +47,7 @@ class MovieDetailsView extends StatelessWidget {
                       width: double.infinity,
                       height: 320,
                       fit: BoxFit.cover,
+                      errorWidget: (context, url, error) => Icon(Icons.error),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(13.0),
