@@ -22,7 +22,7 @@ class MoviesGridView extends StatelessWidget {
               children: [
                 Center(
                   child: Text(
-                    "No movies found 🔍",
+                    "No similar movies found",
                     style: TextStyle(color: Colors.grey, fontSize: 18),
                   ),
                 ),
