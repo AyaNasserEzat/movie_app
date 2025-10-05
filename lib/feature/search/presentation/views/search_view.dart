@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:movies_app/feature/search/presentation/views/widgets/search_result_grid_view.dart';
 import 'package:movies_app/feature/search/presentation/views/widgets/search_text_form_field.dart';
 
