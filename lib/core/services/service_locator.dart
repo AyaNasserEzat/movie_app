@@ -14,6 +14,11 @@ import 'package:movies_app/feature/movie/presentation/mangers/now_playing_movies
 import 'package:movies_app/feature/movie/presentation/mangers/popular_movies_cubit/popular_movies_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/recommendations_movie_cubit/recommendation_movie_cubit.dart';
 import 'package:movies_app/feature/movie/presentation/mangers/top_rated_movies_cubit/top_rated_movies_cubit.dart';
+import 'package:movies_app/feature/search/data/data_source/search_remote_data_source.dart';
+import 'package:movies_app/feature/search/data/repositories/search_repository_imp.dart';
+import 'package:movies_app/feature/search/domain/repositories/search_repository.dart';
+import 'package:movies_app/feature/search/domain/use_cases/search_use_case.dart';
+import 'package:movies_app/feature/search/presentation/manger/seach_cubit/seach_cubit.dart';
 
 final sl = GetIt.instance;
 
@@ -28,10 +33,16 @@ void initServiceLocator() {
   sl.registerLazySingleton<MovieRemoteDataSource>(
     () => MovieRemoteDataSourceImp(sl()),
   );
+   sl.registerLazySingleton<SearchRemoteDataSource>(
+    () => SearchRemoteDataSourceImp(sl()),
+  );
 
   // Repository
   sl.registerLazySingleton<MovieRepository>(
     () => MovieReposyoryImp(movieRemoteDataSource: sl()),
+  );
+   sl.registerLazySingleton<SearchRepository>(
+    () => SearchRepositoryImp(sl()),
   );
 
   // UseCase
@@ -40,6 +51,7 @@ void initServiceLocator() {
   sl.registerLazySingleton(() => GetNowPlayingMoviesUseCase(sl()));
   sl.registerLazySingleton(() => GetRecommendationMoviesUseCase((sl())));
   sl.registerLazySingleton(() => GetMovieDetailsUseCase((sl())));
+    sl.registerLazySingleton(() => SearchUseCase((sl())));
 
   // Cubit
   sl.registerFactory(() => PopularMovieCubit(sl()));
@@ -47,4 +59,5 @@ void initServiceLocator() {
   sl.registerFactory(() => NowPlayingMovieCubit(sl()));
   sl.registerFactory(() => MovieDetailsCubit(sl()));
   sl.registerFactory(() => RecommendationMoviesCubit(sl()));
+  sl.registerFactory(() => SearchCubit(sl()));
 }

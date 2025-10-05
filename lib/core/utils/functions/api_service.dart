@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:movies_app/core/utils/app_constant.dart';
+
 class ApiService {
   final Dio _dio;
   final baseUrl = AppConstant.baseUrl;
@@ -20,8 +21,14 @@ class ApiService {
     );
   }
 
-  Future<Map<String, dynamic>> get({required String endPoint}) async {
-    var response = await _dio.get('$baseUrl$endPoint?api_key=${AppConstant.apiKey}');
+  Future<Map<String, dynamic>> get({
+    required String endPoint,
+    Map<String, dynamic>? queryParameters,
+  }) async {
+    var response = await _dio.get(
+      '$baseUrl$endPoint?api_key=${AppConstant.apiKey}',
+      queryParameters: queryParameters,
+    );
     return response.data;
   }
 }

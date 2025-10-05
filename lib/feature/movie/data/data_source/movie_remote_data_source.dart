@@ -21,7 +21,7 @@ class MovieRemoteDataSourceImp extends MovieRemoteDataSource {
   MovieRemoteDataSourceImp(this.apiService);
   @override
   Future<List<MovieModel>> getNowPlayingMovies() async {
-    final response = await apiService.get(endPoint: 'now_playing');
+    final response = await apiService.get(endPoint: 'movie/now_playing');
     return List<MovieModel>.from(
       (response["results"] as List).map((e) => MovieModel.fromJson(e)),
     );
@@ -29,7 +29,7 @@ class MovieRemoteDataSourceImp extends MovieRemoteDataSource {
 
   @override
   Future<List<MovieModel>> getTopRatedMovies() async {
-    final response = await apiService.get(endPoint: 'top_rated');
+    final response = await apiService.get(endPoint: 'movie/top_rated');
     return List<MovieModel>.from(
       (response["results"] as List).map((e) => MovieModel.fromJson(e)),
     );
@@ -37,7 +37,7 @@ class MovieRemoteDataSourceImp extends MovieRemoteDataSource {
 
   @override
   Future<List<MovieModel>> gettPopularMovies() async {
-    final response = await apiService.get(endPoint: 'popular');
+    final response = await apiService.get(endPoint: 'movie/popular');
     return List<MovieModel>.from(
       (response["results"] as List).map((e) => MovieModel.fromJson(e)),
     );
@@ -58,7 +58,7 @@ class MovieRemoteDataSourceImp extends MovieRemoteDataSource {
     required RecommendationParams recommendationParams,
   }) async {
     final response = await apiService.get(
-      endPoint: '${recommendationParams.id.toString()}/recommendations',
+      endPoint: 'movie/${recommendationParams.id.toString()}/recommendations',
     );
     return List<MovieModel>.from(
       (response["results"] as List).map((e) => MovieModel.fromJson(e)),

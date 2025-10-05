@@ -11,7 +11,10 @@ class SearchRemoteDataSourceImp extends SearchRemoteDataSource {
   SearchRemoteDataSourceImp(this.apiService);
   @override
   Future<List<MovieModel>> search({required SearchParams searchParams}) async {
-    final response = await apiService.get(endPoint: 'search&query=${searchParams.title}');
+    final response = await apiService.get(
+      endPoint: 'search/movie',
+      queryParameters: {'query': searchParams.title},
+    );
     return List<MovieModel>.from(
       (response["results"] as List).map((e) => MovieModel.fromJson(e)),
     );

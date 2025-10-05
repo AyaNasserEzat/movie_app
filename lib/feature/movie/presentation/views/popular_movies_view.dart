@@ -24,16 +24,14 @@ class PopularMoviesView extends StatelessWidget {
             if (state is PopularMovieLoading) {
               return MovieItemShimmerListiew();
             } else if (state is PopularMovieSuccess) {
-              return Expanded(
-                child: ListView.builder(
-                  itemCount: state.movies.length,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: MovieItem(movieEntity: state.movies[index]),
-                    );
-                  },
-                ),
+              return ListView.builder(
+                itemCount: state.movies.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: MovieItem(movieEntity: state.movies[index]),
+                  );
+                },
               );
             } else if (state is PopularMovieFailure) {
               return Center(child: Text(state.message));
