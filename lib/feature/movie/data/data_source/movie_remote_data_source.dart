@@ -7,7 +7,7 @@ import 'package:movies_app/feature/movie/domain/usecases/get_recommendation_movi
 abstract class MovieRemoteDataSource {
   Future<List<MovieModel>> getNowPlayingMovies();
   Future<List<MovieModel>> getTopRatedMovies();
-  Future<List<MovieModel>> gettPopularMovies();
+  Future<List<MovieModel>> gettPopularMovies({int page = 1});
   Future<MovieDetailsModel> getMovieDetails({
     required MovieDetailsParams movieDetailsParams,
   });
@@ -36,8 +36,11 @@ class MovieRemoteDataSourceImp extends MovieRemoteDataSource {
   }
 
   @override
-  Future<List<MovieModel>> gettPopularMovies() async {
-    final response = await apiService.get(endPoint: 'movie/popular');
+  Future<List<MovieModel>> gettPopularMovies({int page = 1}) async {
+    final response = await apiService.get(
+      endPoint: 'movie/popular',
+      queryParameters: {'page': page},
+    );
     return List<MovieModel>.from(
       (response["results"] as List).map((e) => MovieModel.fromJson(e)),
     );

@@ -27,10 +27,13 @@ class MovieReposyoryImp extends MovieRepository {
   }
 
   @override
-  Future<Either<Failure, List<MovieEntity>>> getPopularMovies() async {
+  Future<Either<Failure, List<MovieEntity>>> getPopularMovies({
+    int page = 1,
+  }) async {
     try {
-      List<MovieEntity> movies =
-          await movieRemoteDataSource.gettPopularMovies();
+      List<MovieEntity> movies = await movieRemoteDataSource.gettPopularMovies(
+        page: page,
+      );
       return right(movies);
     } catch (e) {
       if (e is DioException) {

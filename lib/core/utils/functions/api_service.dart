@@ -15,7 +15,7 @@ class ApiService {
         error: true,
         logPrint: (obj) {
           // هنا بيتطبع اللوجز كلها
-          print(obj);
+         // print(obj);
         },
       ),
     );

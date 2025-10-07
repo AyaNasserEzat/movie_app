@@ -8,7 +8,11 @@ import 'package:movies_app/feature/movie/domain/usecases/get_recommendation_movi
 abstract class MovieRepository {
   Future<Either<Failure, List<MovieEntity>>> getNowPlayingMovies();
   Future<Either<Failure, List<MovieEntity>>> getTopRatedMovies();
-  Future<Either<Failure, List<MovieEntity>>> getPopularMovies();
-  Future<Either<Failure, MovieDetailsEntity>> getMovieDetails({required MovieDetailsParams movieDetailsParams});
- Future<Either<Failure, List<MovieEntity>>> getRecommendationMovies({required RecommendationParams recommendationParams});
+  Future<Either<Failure, List<MovieEntity>>> getPopularMovies({int page = 1});
+  Future<Either<Failure, MovieDetailsEntity>> getMovieDetails({
+    required MovieDetailsParams movieDetailsParams,
+  });
+  Future<Either<Failure, List<MovieEntity>>> getRecommendationMovies({
+    required RecommendationParams recommendationParams,
+  });
 }
