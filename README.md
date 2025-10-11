@@ -59,24 +59,24 @@ The application is built following the principles of **Clean Architecture**, ens
 
 The project is organized into feature-centric modules under the `lib/` directory, following the **Clean Architecture** pattern.
 
-
 lib/
-├── core/                  # Shared utilities, widgets, API services, error handling
-│   ├── error/             # App-wide error handling classes
-│   ├── services/          # API service (Dio client, endpoints)
-│   ├── utils/             # Helpers, constants
-├   |── use_case/          # Base use case classes and definitions
-│   └── widgets/           # Shared custom widgets
-├── feature/               # Main application features
-│   ├── home/              # Home screen feature
-│   │   ├── data/          # Data layer: models, repositories
-│   │   ├── domain/        # entities, use cases, repository interfaces
-│   │   └── presentation/  # Presentation layer: views, cubits
-│   ├── search/            # Search feature
-│   │   ├── data/
-│   │   ├── domain/        
-│   │   └── presentation/
-└── main.dart              # App entry point
+├── core/ # Shared utilities, widgets, API services, error handling
+│ ├── error/ # App-wide error handling classes
+│ ├── services/ # API service (Dio client, endpoints)
+│ ├── utils/ # Helpers, constants
+│ ├── use_case/ # Base use case classes and definitions
+│ └── widgets/ # Shared custom widgets
+├── feature/ # Main application features
+│ ├── home/ # Home screen feature
+│ │ ├── data/ # Data layer: models, repositories
+│ │ ├── domain/ # entities, use cases, repository interfaces
+│ │ └── presentation/ # Presentation layer: views, cubits
+│ ├── search/ # Search feature
+│ │ ├── data/
+│ │ ├── domain/
+│ │ └── presentation/
+│ └── splash/ # Splash screen
+
 
 - **`core`**: Contains global utilities, API services, error handling, and reusable widgets.  
 - **`feature`**: Each directory represents a separate feature (Home, Search, Splash).  
