@@ -59,6 +59,7 @@ The application is built following the principles of **Clean Architecture**, ens
 
 The project is organized into feature-centric modules under the `lib/` directory, following the **Clean Architecture** pattern.
 
+```
 lib/
 ├── core/ # Shared utilities, widgets, API services, error handling
 │ ├── error/ # App-wide error handling classes
@@ -76,6 +77,7 @@ lib/
 │ │ ├── domain/
 │ │ └── presentation/
 │ └── splash/ # Splash screen
+```
 
 
 - **`core`**: Contains global utilities, API services, error handling, and reusable widgets.  
