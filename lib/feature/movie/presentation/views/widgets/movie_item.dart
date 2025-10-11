@@ -8,8 +8,11 @@ class MovieItem extends StatelessWidget {
   final MovieEntity movieEntity;
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final bool isLandScap =
+        MediaQuery.of(context).orientation == Orientation.landscape;
     return SizedBox(
-      height: MediaQuery.of(context).size.height * .23,
+      height: isLandScap ? screenHeight * .40 : screenHeight * .20,
       child: Container(
         padding: EdgeInsets.all(8),
         decoration: BoxDecoration(
@@ -20,10 +23,7 @@ class MovieItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: 10,
           children: [
-            CustomMovieImage(
-              imageUrl:
-                  movieEntity.backdropPath,
-            ),
+            CustomMovieImage(imageUrl: movieEntity.backdropPath),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
