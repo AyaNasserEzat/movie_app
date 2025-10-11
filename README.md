@@ -24,16 +24,16 @@ It utilizes **The Movie Database (TMDB) API** to fetch a wide range of movie dat
 <div align="center">
 
 ### 🏠 Home & splash
-<img src="https://github.com/AyaNasserEzat/movie_app/blob/2c732b8a44c5e4df0724b4292c34109b90867e61/app_screenshots/homeAndSplash.jpeg" width="250"/>
+<img src="https://github.com/AyaNasserEzat/movie_app/blob/2c732b8a44c5e4df0724b4292c34109b90867e61/app_screenshots/homeAndSplash.jpeg"/>
 
 ### 🔥 Popular Movies & top rated novies
-<img src="https://github.com/AyaNasserEzat/movie_app/blob/2c732b8a44c5e4df0724b4292c34109b90867e61/app_screenshots/top_ratedAndPopular.jpeg" width="250"/>
+<img src="https://github.com/AyaNasserEzat/movie_app/blob/2c732b8a44c5e4df0724b4292c34109b90867e61/app_screenshots/top_ratedAndPopular.jpeg"/>
 
 ### ⭐ Movie Details
-<img src="https://github.com/AyaNasserEzat/movie_app/blob/2c732b8a44c5e4df0724b4292c34109b90867e61/app_screenshots/details_feature.jpeg" width="250"/>
+<img src="https://github.com/AyaNasserEzat/movie_app/blob/2c732b8a44c5e4df0724b4292c34109b90867e61/app_screenshots/details_feature.jpeg"/>
 
 ### 🔍 Search Screen
-<img src="https://github.com/AyaNasserEzat/movie_app/blob/2c732b8a44c5e4df0724b4292c34109b90867e61/app_screenshots/search_feature.jpeg" width="250"/>
+<img src="https://github.com/AyaNasserEzat/movie_app/blob/2c732b8a44c5e4df0724b4292c34109b90867e61/app_screenshots/search_feature.jpeg"/>
 
 </div>
 
@@ -60,25 +60,23 @@ The application is built following the principles of **Clean Architecture**, ens
 The project is organized into feature-centric modules under the `lib/` directory, following the **Clean Architecture** pattern.
 
 
-├── core/ # Shared code used across multiple features
-│ ├── error/ # App-wide error handling classes
-│ ├── services/ # API service (Dio client, endpoints)
-│ ├── use_cases/ # Base use case classes and definitions
-│ ├── utils/ # Helpers, constants, and pagination logic
-│ └── widgets/ # Shared custom widgets
-│
-├── feature/ # Main features of the application
-│ ├── home/ # Home screen feature
-│ │ ├── data/ # Models, repositories, remote sources
-│ │ ├── domain/ # Entities and use cases
-│ │ └── presentation/ # UI + Cubits (NowPlaying, Popular, TopRated)
-│ │
-│ ├── search/ # Search feature
-│ │ ├── data/
-│ │ ├── domain/
-│ │ └── presentation/
-└── main.dart # App entry point
-
+lib/
+├── core/                  # Shared utilities, widgets, API services, error handling
+│   ├── error/             # App-wide error handling classes
+│   ├── services/          # API service (Dio client, endpoints)
+│   ├── utils/             # Helpers, constants
+├   |── use_case/          # Base use case classes and definitions
+│   └── widgets/           # Shared custom widgets
+├── feature/               # Main application features
+│   ├── home/              # Home screen feature
+│   │   ├── data/          # Data layer: models, repositories
+│   │   ├── domain/        # entities, use cases, repository interfaces
+│   │   └── presentation/  # Presentation layer: views, cubits
+│   ├── search/            # Search feature
+│   │   ├── data/
+│   │   ├── domain/        
+│   │   └── presentation/
+└── main.dart              # App entry point
 
 - **`core`**: Contains global utilities, API services, error handling, and reusable widgets.  
 - **`feature`**: Each directory represents a separate feature (Home, Search, Splash).  
